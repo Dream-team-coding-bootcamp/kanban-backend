@@ -4,15 +4,12 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const pool = new pg.Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  connectionString: process.env.DATABASE_URL
 })
 
 // Test para probar conexion
 pool.query('SELECT NOW()').then(result => {
-  
+  console.log(result)
 })
 
 // Test para probar conexion
