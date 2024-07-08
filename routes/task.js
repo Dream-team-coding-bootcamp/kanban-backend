@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import validate from '../middleware/validate.js';
-import { createTaskSchema, updateTitleSchema, updateContentSchema, changeBoardSchema } from '../schemas/taskSchema.js';
+import validate from '../middleware/validate.js'
+import { createTaskSchema, updateTitleSchema, updateContentSchema, changeBoardSchema } from '../schemas/taskSchema.js'
 
 import { create, updateTitle, updateContent, findByTaskId, deleteTask, chageBoard } from '../controllers/taskController.js'
 

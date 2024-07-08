@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { ProjectsController } from '../controllers/projects.js'
 import validate from '../middleware/validate.js'
-import  { createProjectSchema, updateProjectSchema }  from '../schemas/projectSchema.js'
+import { createProjectSchema, updateProjectSchema } from '../schemas/projectSchema.js'
 const router = Router()
 
 router.get('/:user_id', ProjectsController.getProjects)

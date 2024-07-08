@@ -1,6 +1,9 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import User from '../models/userModel.js'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 export const register = async (req, res) => {
   const { username, email, password } = req.body
@@ -24,7 +27,8 @@ export const login = async (req, res) => {
     const validPassword = bcrypt.compareSync(password, user.password)
     if (!validPassword) return res.status(400).json({ error: 'Invalid email or password' })
 
-    const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET, { expiresIn: '1h' })
+    const token = jwt.sign({ id: user.user_id }, process.env.TOKEN_SECRET, { expiresIn: '1h' })
+
     res.json({ token })
   } catch (err) {
     res.status(500).json({ error: err.message })
@@ -32,8 +36,9 @@ export const login = async (req, res) => {
 }
 
 export const update = async (req, res) => {
-  const { id } = req.params
+  const { id } = req.user
   const { name } = req.body
+
   try {
     const user = await User.updateName({ id, name })
     res.json(user)
