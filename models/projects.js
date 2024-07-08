@@ -2,7 +2,7 @@ import { pool } from "../db.js";
 export class Projects {
   static async getProjects ({ user_id }) {
     const result = await pool.query(
-      "SELECT * FROM projects WHERE user_id = $1 ORDER BY id ASC",
+      "SELECT * FROM projects WHERE user_id = $1 ORDER BY user_id ASC",
       [user_id]
     );
     return result.rows;
@@ -33,9 +33,10 @@ export class Projects {
   };
 
   static async deleteProject ({ user_id, project_id }) {
-    await pool.query(
+    const { rowCount } = await pool.query(
       "DELETE FROM projects WHERE user_id = $1 AND project_id = $2", 
       [user_id, project_id]
     );
+    return rowCount;
   };
 }

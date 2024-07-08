@@ -1,18 +1,12 @@
 import { Router } from "express";
-import {
-  getProjects,
-  getProjectById,
-  createProject,
-  updateProject,
-  deleteProject,
-} from "../models/projects";
+import { ProjectsController } from "../controllers/projects";
 
 const router = Router();
 
-router.get("/:user_id/projects", getProjects);
-router.get("/:user_id/projects/:project_id", getProjectById);
-router.post("/:user_id/projects", createProject);
-router.put("/:user_id/projects/:project_id", updateProject);
-router.delete("/:user_id/projects/:project_id", deleteProject);
+router.get("/:user_id/projects", ProjectsController.getProjects);
+router.get("/:user_id/projects/:project_id", ProjectsController.getProjectById);
+router.post("/:user_id/projects", ProjectsController.createProject);
+router.put("/:user_id/projects/:project_id", ProjectsController.updateProject);
+router.delete("/:user_id/projects/:project_id", ProjectsController.deleteProject);
 
 export default router;
