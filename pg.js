@@ -29,3 +29,4 @@ const checkConnection = async () => {
 checkConnection()
 
 export default pool
+// Se hacen consultas a la base de datos con el objeto pool.query() , y es una promesa por lo tanto se usa await
