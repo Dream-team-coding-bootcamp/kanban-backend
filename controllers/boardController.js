@@ -3,7 +3,8 @@ import Board from '../models/boards.js'
 export default class BoardController {
   static async createBoard (req, res) {
     try {
-      const { title, projectId } = req.body
+      const { projectId } = req.params
+      const { title } = req.body
       const newBoard = await Board.create({ title, projectId })
       res.status(201).json(newBoard)
     } catch (error) {

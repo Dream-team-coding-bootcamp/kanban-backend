@@ -4,7 +4,7 @@ import BoardController from '../controllers/boardController.js'
 const router = express.Router()
 
 // Crear un nuevo board
-router.post('/', BoardController.createBoard)
+router.post('/:projectId', BoardController.createBoard)
 
 // Obtener todos los boards de un proyecto
 router.get('/project/:projectId', BoardController.getBoardsByProjectId)
