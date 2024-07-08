@@ -16,6 +16,11 @@ export default class tasks {
     return result.rows[0]
   }
 
+  static async updateContent ({ taskId, content }) {
+    const result = await db.query('UPDATE tasks SET content = $1 WHERE task_id = $2 RETURNING *', [content, taskId])
+    return result.rows[0]
+  }
+
   static async delete ({ taskId }) {
     await db.query('DELETE FROM tasks WHERE task_id = $1', [taskId])
   }

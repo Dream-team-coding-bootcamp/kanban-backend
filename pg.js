@@ -1,10 +1,13 @@
 import pg from 'pg'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const pool = new pg.Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'kanban',
-  password: 'stivencano123',
+  database: 'postgres',
+  password: process.env.PG_PASSWORD,
   port: 5432
 })
 
