@@ -6,8 +6,8 @@ dotenv.config()
 const pool = new pg.Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'nodepg',
-  password: "1705",
+  database: 'postgres',
+  password: process.env.PG_PASSWORD,
   port: 5432
 })
 
