@@ -24,6 +24,10 @@ export default class tasks {
   static async delete ({ taskId }) {
     await db.query('DELETE FROM tasks WHERE task_id = $1', [taskId])
   }
+
+  static async changeBoardId ({ taskId, boardId }) {
+    await db.query('UPDATE tasks SET board_id = $1 WHERE task_id = $2', [boardId, taskId])
+  }
 }
 
 // task_id,title,content,board_id
