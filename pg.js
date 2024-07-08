@@ -3,7 +3,7 @@ import pg from 'pg'
 const pool = new pg.Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'postgres',
+  database: 'kanban',
   password: 'stivencano123',
   port: 5432
 })

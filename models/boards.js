@@ -1,6 +1,6 @@
 import db from '../pg.js'
 
-export class Board {
+export default class Board {
   static async create ({ title, projectId }) {
     const result = await db.query(
       'INSERT INTO boards (title, project_id) VALUES ($1, $2) RETURNING *',
@@ -25,7 +25,7 @@ export class Board {
     return result.rows[0]
   }
 
-  static async update ({ boardId, title }) {
+  static async updateTitle ({ boardId, title }) {
     const result = await db.query(
       'UPDATE boards SET title = $1 WHERE board_id = $2 RETURNING *',
       [title, boardId]
