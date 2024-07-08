@@ -17,10 +17,9 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/auth', authRouter)
-app.use(auth)
-app.use('/board', boardRouter)
-app.use('/project', projectRouter)
-app.use('/task', taskRouter)
+app.use('/board', auth, boardRouter)
+app.use('/project', auth, projectRouter)
+app.use('/task', auth, taskRouter)
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`)
