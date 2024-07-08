@@ -2,9 +2,13 @@ import Projects from '../models/projects.js'
 
 export class ProjectsController {
   static async getProjects (req, res) {
-    const { user_id } = req.params
-    const projects = await Projects.getProjects({ user_id })
-    res.json(projects)
+    try {
+      const { user_id } = req.params
+      const projects = await Projects.getProjects({ user_id })
+      res.json(projects)
+    } catch (error) {
+      return res.status(404).json({ error: 'No projects found' })
+    }
   };
 
   static async getProjectById (req, res) {
@@ -26,10 +30,14 @@ export class ProjectsController {
   };
 
   static async updateProject (req, res) {
-    const { user_id, project_id } = req.params
-    const { name, description } = req.body
-    const result = await Projects.updateProject({ name, description, user_id, project_id })
-    return res.json(result)
+    try {
+      const { user_id, project_id } = req.params
+      const { name, description } = req.body
+      const result = await Projects.updateProject({ name, description, user_id, project_id })
+      return res.json(result)
+    } catch (error) {
+      return res.status(404).json({ message: 'Project not found' })
+    }
   };
 
   static async deleteProject (req, res) {
