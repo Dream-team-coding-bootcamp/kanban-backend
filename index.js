@@ -11,8 +11,6 @@ app.use(bodyParser.json()); // procesamiento de datos en formato JSON del body
 //app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-console.log('TOKEN_SECRET:', process.env.TOKEN_SECRET);
-
 app.use('/user', userRouter)
 
 app.listen(5000, () => {
