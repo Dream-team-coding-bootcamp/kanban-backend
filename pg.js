@@ -4,8 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const pool = new pg.Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: 
+  connectionString: process.env.DATABASE_URL
 })
 
 // Test para probar conexion
