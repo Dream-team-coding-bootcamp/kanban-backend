@@ -6,8 +6,8 @@ dotenv.config()
 const pool = new pg.Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'postgres',
-  password: process.env.PG_PASSWORD,
+  database: 'kanban',
+  password: 'stivencano123',
   port: 5432
 })
 
