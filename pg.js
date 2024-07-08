@@ -4,11 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const pool = new pg.Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'postgres',
-  password: process.env.PG_PASSWORD,
-  port: 5432
+  connectionString: process.env.DATABASE_URL
 })
 
 // Test para probar conexion
