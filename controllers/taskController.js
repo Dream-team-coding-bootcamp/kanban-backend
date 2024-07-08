@@ -59,3 +59,14 @@ export const deleteTask = async (req, res) => {
     res.status(500).json({ error: err.message })
   }
 }
+
+export const chageBoard = async (req, res) => {
+  const { taskId } = req.params
+  const { boardId } = req.body
+  try {
+    const task = await tasks.changeBoardId({ taskId, boardId })
+    res.json(task)
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+}
