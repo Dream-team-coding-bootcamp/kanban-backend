@@ -13,6 +13,8 @@ const auth = (req, res, next) => {
       const verified = jwt.verify(token, process.env.TOKEN_SECRET)
 
       req.user = verified
+
+      console.log(req.user.id)
       next()
     } catch (err) {
       res.status(400).send('Invalid Token')

@@ -4,7 +4,11 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const pool = new pg.Pool({
-  connectionString: process.env.DATABASE_URL
+  user: 'postgres',
+  host: 'localhost',
+  database: 'nodepg',
+  password: '1705',
+  port: 5432
 })
 
 // Test para probar conexion
