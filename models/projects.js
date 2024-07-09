@@ -18,7 +18,7 @@ export default class Projects {
 
   static async createProject ({ user_id, name, description }) {
     const result = await pool.query(
-      'INSERT INTO projects (user_id, name, description) VALUES ($1, $2, $3)',
+      'INSERT INTO projects (user_id, name, description) VALUES ($1, $2, $3) RETURNING *',
       [user_id, name, description]
     )
     return result.rows[0]
@@ -26,7 +26,7 @@ export default class Projects {
 
   static async updateProject ({ name, description, user_id, project_id }) {
     const result = await pool.query(
-      'UPDATE projects SET name = $1, description = $2 WHERE user_id = $3 AND project_id = $4',
+      'UPDATE projects SET name = $1, description = $2 WHERE user_id = $3 AND project_id = $4 RETURNING *',
       [name, description, user_id, project_id]
     )
     return result.rows[0]
