@@ -27,7 +27,7 @@ export const login = async (req, res) => {
     const validPassword = bcrypt.compareSync(password, user.password)
     if (!validPassword) return res.status(400).json({ error: 'Invalid email or password' })
 
-    const token = jwt.sign({ id: user.user_id }, process.env.TOKEN_SECRET, { expiresIn: '1h' })
+    const token = jwt.sign({ id: user.user_id }, process.env.TOKEN_SECRET, { expiresIn: '3h' })
 
     res.json({ token })
   } catch (err) {
@@ -37,10 +37,10 @@ export const login = async (req, res) => {
 
 export const update = async (req, res) => {
   const { id } = req.user
-  const { name } = req.body
+  const { username } = req.body
 
   try {
-    const user = await User.updateName({ id, name })
+    const user = await User.updateName({ id, username })
     res.json(user)
   } catch (err) {
     res.status(500).json({ error: err.message })
