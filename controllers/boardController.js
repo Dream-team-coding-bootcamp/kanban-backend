@@ -59,7 +59,8 @@ export default class BoardController {
   static async deleteBoard (req, res) {
     try {
       const { boardId } = req.params
-      const rowCount = await Board.delete({ boardId })
+      const user_id = req.user.id
+      const rowCount = await Board.delete({ boardId, user_id })
       if (rowCount === 0) {
         return res.status(404).json({ message: 'Board not found' })
       }

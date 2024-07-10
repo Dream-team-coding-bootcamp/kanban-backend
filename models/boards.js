@@ -33,10 +33,10 @@ export default class Board {
     return result.rows[0]
   }
 
-  static async delete ({ boardId }) {
+  static async delete ({ boardId, user_ud }) {
     const { rowCount } = await db.query(
-      'DELETE FROM boards WHERE board_id = $1',
-      [boardId]
+      'DELETE FROM boards WHERE board_id IN (SELECT b.board_id FROM boards b JOIN projects pj ON pj.project_id = b.project_id JOIN users u ON u.user_id = pj.user_id WHERE u.user_id = $1 AND b.board_id = $2) RETURNING *',
+      [user_ud, boardId]
     )
     return rowCount
   }
