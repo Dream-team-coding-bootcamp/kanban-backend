@@ -14,7 +14,6 @@ const auth = (req, res, next) => {
 
       req.user = verified
 
-      console.log(req.user.id)
       next()
     } catch (err) {
       res.status(400).send('Invalid Token')
