@@ -1,4 +1,4 @@
-import pool from '../pg.js'
+import pool from '../db.js'
 
 // metodos NO funcion
 class User {

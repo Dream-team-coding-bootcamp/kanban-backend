@@ -16,7 +16,7 @@ const auth = (req, res, next) => {
 
       next()
     } catch (err) {
-      res.status(400).send({ error: 'Invalid Token'})
+      res.status(400).send({ error: 'Invalid Token' })
     }
   } else {
     res.status(401).send({ error: 'Unauthorized' })

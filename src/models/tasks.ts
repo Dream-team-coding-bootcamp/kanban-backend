@@ -1,4 +1,4 @@
-import db from '../pg.js'
+import db from '../db.js'
 
 export default class tasks {
   static async create ({ title, content, board_id, userId }) {
@@ -44,7 +44,7 @@ export default class tasks {
       'SELECT 1 FROM tasks t JOIN boards b ON t.board_id = b.board_id JOIN projects p ON b.project_id = p.project_id WHERE t.task_id = $1 AND p.user_id = $2',
       [taskId, userId]
     )
-  
+
     if (!userHasAccess.rows.length) {
       throw new Error('User does not have access to this task or board.')
     }
@@ -62,7 +62,7 @@ export default class tasks {
       'SELECT 1 FROM boards b JOIN projects pj ON b.project_id = pj.project_id WHERE pj.user_id = $1 AND b.board_id = $2',
       [userId, boardId]
     )
-  
+
     if (!userHasAccess.rows.length) {
       throw new Error('User does not have access to this board.')
     }

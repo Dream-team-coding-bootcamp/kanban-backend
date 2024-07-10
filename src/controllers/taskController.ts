@@ -1,8 +1,7 @@
 import tasks from '../models/tasks.js'
-import boards from '../models/boards.js'
-import projects from '../models/projects.js'
+import { Request, Response } from 'express'
 
-export const create = async (req, res) => {
+export const create = async (req: Request, res: Response) => {
   const userId = req.user.id
   const { title, content, board_id } = req.body
 
@@ -17,7 +16,7 @@ export const create = async (req, res) => {
 
 // tasks.findByTaskId
 
-export const findByTaskId = async (req, res) => {
+export const findByTaskId = async (req: Request, res: Response) => {
   const userId = req.user.id
   const { taskId } = req.params
   try {
@@ -31,7 +30,7 @@ export const findByTaskId = async (req, res) => {
 
 // tasks.updateTitle
 
-export const updateTitle = async (req, res) => {
+export const updateTitle = async (req: Request, res: Response) => {
   const userId = req.user.id
   const { taskId } = req.params
   const { title } = req.body
@@ -47,7 +46,7 @@ export const updateTitle = async (req, res) => {
 
 // tasks.updateContent
 
-export const updateContent = async (req, res) => {
+export const updateContent = async (req: Request, res: Response) => {
   const userId = req.user.id
   const { taskId } = req.params
   const { content } = req.body
@@ -62,7 +61,7 @@ export const updateContent = async (req, res) => {
 
 // tasks.delete
 
-export const deleteTask = async (req, res) => {
+export const deleteTask = async (req: Request, res: Response) => {
   const userId = req.user.id
   const { taskId } = req.params
   try {
@@ -73,7 +72,7 @@ export const deleteTask = async (req, res) => {
   }
 }
 
-export const changeBoard = async (req, res) => {
+export const changeBoard = async (req: Request, res: Response) => {
   const { taskId } = req.params
   const { board_id } = req.body
   const userId = req.user.id
