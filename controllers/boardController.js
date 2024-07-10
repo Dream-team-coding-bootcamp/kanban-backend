@@ -3,9 +3,10 @@ import Board from '../models/boards.js'
 export default class BoardController {
   static async createBoard (req, res) {
     try {
+      const user_id = req.user.id
       const { project_id } = req.params
       const { title } = req.body
-      const newBoard = await Board.create({ title, project_id })
+      const newBoard = await Board.create({ title, project_id, user_id })
       res.status(201).json(newBoard)
     } catch (error) {
       res.status(400).json({ error: error.message })
@@ -15,7 +16,8 @@ export default class BoardController {
   static async getBoardsByProjectId (req, res) {
     try {
       const { project_id } = req.params
-      const boards = await Board.findByProjectId({ project_id })
+      const user_id = req.user.id
+      const boards = await Board.findByProjectId({ user_id, project_id })
       if (!boards) {
         res.status(400).json({ message: 'Boards not found' })
       }
@@ -28,7 +30,8 @@ export default class BoardController {
   static async getBoardById (req, res) {
     try {
       const { boardId } = req.params
-      const board = await Board.findById({ boardId })
+      const user_id = req.user.id
+      const board = await Board.findById({ user_id, board_id: boardId })
       if (board) {
         res.status(200).json(board)
       } else {
