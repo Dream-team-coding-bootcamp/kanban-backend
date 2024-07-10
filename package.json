@@ -2,11 +2,12 @@
   "name": "kanban-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "tsc": "tsc",
+    "start": "node build/index.ts",
+    "dev": "tsc && nodemon build/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,10 +15,11 @@
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.1.4",
-    "standard": "^17.1.0"
+    "standard": "^17.1.0",
+    "typescript": "^5.5.3"
   },
   "eslintConfig": {
-    "extends": "./node_modules/standard/eslintrc.json"
+    "extends": "./node_modules/standard/eslintrc.tson"
   },
   "dependencies": {
     "@sinclair/typebox": "^0.32.34",

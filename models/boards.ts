@@ -7,7 +7,7 @@ export default class Board {
       'SELECT 1 FROM projects WHERE project_id = $1 AND user_id = $2',
       [project_id, user_id]
     )
-
+  
     if (!userHasAccess.rows.length) {
       throw new Error('User does not have access to this project.')
     }
@@ -17,9 +17,10 @@ export default class Board {
       'INSERT INTO boards (title, project_id) VALUES ($1, $2) RETURNING board_id, title, project_id',
       [title, project_id]
     )
-
+  
     return result.rows[0]
   }
+
 
   static async findByProjectId ({ user_id, project_id }) {
     const result = await db.query(
@@ -41,6 +42,9 @@ export default class Board {
     )
     return result.rows[0]
   }
+
+
+
 
   static async updateTitle ({ boardId, title, user_id }) {
     const result = await db.query(

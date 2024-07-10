@@ -754,7 +754,7 @@ packages:
     resolution: {integrity: sha512-NGnrKwXzSms2qUUih/ILZ5JBqNTSa1+ZmP6flaIp6KmSElgE9qdndzS3cqjrDovwFdmwsGsLdeFgB6suw+1e9g==}
     engines: {node: '>= 0.4'}
 
-  ipaddr.js@1.9.1:
+  ipaddr.ts@1.9.1:
     resolution: {integrity: sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==}
     engines: {node: '>= 0.10'}
 
@@ -2489,7 +2489,7 @@ snapshots:
       hasown: 2.0.2
       side-channel: 1.0.6
 
-  ipaddr.js@1.9.1: {}
+  ipaddr.ts@1.9.1: {}
 
   is-array-buffer@3.0.4:
     dependencies:
@@ -2948,7 +2948,7 @@ snapshots:
   proxy-addr@2.0.7:
     dependencies:
       forwarded: 0.2.0
-      ipaddr.js: 1.9.1
+      ipaddr.ts: 1.9.1
 
   pstree.remy@1.1.8: {}
 

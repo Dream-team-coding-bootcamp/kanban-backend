@@ -1,4 +1,4 @@
-import pool from '../pg.js'
+import pool from '../pg.ts'
 export default class Projects {
   static async getProjects ({ user_id }) {
     const result = await pool.query(

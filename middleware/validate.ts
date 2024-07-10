@@ -9,7 +9,7 @@ const validate = (schema) => {
   return (req, res, next) => {
     const valid = validate(req.body)
     if (!valid) {
-      return res.status(400).json({ errors: validate.errors.map(error => error.message) })
+      return res.status(400).tson({ errors: validate.errors.map(error => error.message) })
     }
     next()
   }

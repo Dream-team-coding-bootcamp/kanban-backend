@@ -8,7 +8,7 @@ const validateSchema = (schema) => (req, res, next) => {
   const validate = ajv.compile(schema)
   const valid = validate(req.body)
   if (!valid) {
-    return res.status(400).json({ errors: validate.errors.map(error => error.message) })
+    return res.status(400).tson({ errors: validate.errors.map(error => error.message) })
   }
   next()
 }

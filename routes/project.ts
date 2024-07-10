@@ -1,7 +1,7 @@
 import { Router } from 'express'
-import { ProjectsController } from '../controllers/projects.js'
-import validate from '../middleware/validate.js'
-import { createProjectSchema, updateProjectSchema } from '../schemas/projectSchema.js'
+import { ProjectsController } from '../controllers/projects.ts'
+import validate from '../middleware/validate.ts'
+import { createProjectSchema, updateProjectSchema } from '../schemas/projectSchema.ts'
 const router = Router()
 
 router.get('/', ProjectsController.getProjects)
