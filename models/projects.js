@@ -26,7 +26,7 @@ export default class Projects {
 
   static async updateProject ({ name, description, user_id, project_id }) {
     const result = await pool.query(
-      'UPDATE projects SET name = $1, description = $2 WHERE user_id = $3 AND project_id = $4 RETURNING *',
+      'update projects set name = $1, description = $2 where project_id in (SELECT pj.project_id FROM  projects pj JOIN users u ON u.user_id = pj.user_id where u.user_id = $3 and pj.project_id = $4) RETURNING *',
       [name, description, user_id, project_id]
     )
     return result.rows[0]
@@ -34,7 +34,7 @@ export default class Projects {
 
   static async deleteProject ({ user_id, project_id }) {
     const { rowCount } = await pool.query(
-      'DELETE FROM projects WHERE user_id = $1 AND project_id = $2',
+      'delete from projects  where project_id in (SELECT pj.project_id FROM  projects pj JOIN users u ON u.user_id = pj.user_id where u.user_id = $1 and pj.project_id = $2)',
       [user_id, project_id]
     )
     return rowCount
